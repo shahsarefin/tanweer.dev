@@ -1,23 +1,44 @@
 /* css/projects.css */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
 .project-card {
     opacity: 0;
-    transform: translateY(50px) rotateX(-10deg);
+    transform: translateY(50px);
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .project-card.animate {
     opacity: 1;
-    transform: translateY(0) rotateX(0);
+    transform: translateY(0);
 }
 
 @keyframes slap {
-    0% { transform: translateY(-100px) rotate(-5deg); opacity: 0; }
-    50% { transform: translateY(10px) rotate(2deg); opacity: 1; }
+    0% { transform: translateY(-50px) rotate(-5deg); opacity: 0; }
+    50% { transform: translateY(10px) rotate(2deg); opacity: 0.5; }
     100% { transform: translateY(0) rotate(0); opacity: 1; }
 }
 
 .project-card.slap-animate {
-    animation: slap 0.5s ease-out forwards;
+    animation: slap 0.7s ease-out forwards;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-text {
+    flex-grow: 1;
 }
 
 .screenshot-container {
@@ -27,25 +48,27 @@
     margin-bottom: 20px;
     overflow: hidden;
 }
+
 .screenshot-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: all 0.3s ease;
 }
+
 .screenshot-container:hover .screenshot-img {
     position: fixed;
-    top: 30%;
-    left: 25%;
-    bottom: 60%;
-    right: 45%;
-    width: 60%;
-    height: 60%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
     object-fit: contain;
     z-index: 1000;
     background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
+
 .modal-xl {
     max-width: 90%;
 }
@@ -53,22 +76,55 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .screenshot-container {
-        height: 150px;
+        height: 250px;
     }
     
-    .screenshot-expanded {
-        max-width: 95%;
-        max-height: 95%;
+    .screenshot-container:hover .screenshot-img {
+        width: 90%;
+        height: 90%;
     }
 }
 
 @media (max-width: 480px) {
     .screenshot-container {
-        height: 120px;
+        height: 200px;
     }
     
-    .screenshot-expanded {
-        max-width: 98%;
-        max-height: 98%;
+    .screenshot-container:hover .screenshot-img {
+        width: 95%;
+        height: 95%;
+    }
+}
+
+/* Additional styles for better visibility on mobile */
+@media (max-width: 480px) {
+    .modal-body .row {
+        flex-direction: column;
+    }
+
+    .modal-body .col-md-4 {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .screenshot-container {
+        height: auto;
+        max-height: 300px;
+    }
+
+    .screenshot-img {
+        height: auto;
+        max-height: 300px;
+    }
+
+    .screenshot-container:hover .screenshot-img {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 95%;
+        height: auto;
+        max-height: 90vh;
+        object-fit: contain;
     }
 }
