@@ -147,55 +147,76 @@
         </div>
 
         <!-- Movie.Info Modal -->
-        <div class="modal fade" id="project2Modal" tabindex="-1" aria-labelledby="project2ModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="project2ModalLabel">Movie.Info</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <h6>Description</h6>
-                        <p>Movie.Info is a web application that provides information about popular, top-rated, and upcoming movies. Users can search for movies and view detailed information about each movie.</p>
-                        
-                        <h6>Technologies Used</h6>
-                        <ul>
-                            <li>React</li>
-                            <li>React Router</li>
-                            <li>Styled-components</li>
-                            <li>TMDB API</li>
-                            <li>Vite (for project setup and build)</li>
-                        </ul>
-                        
-                        <h6>Key Features</h6>
-                        <ul>
-                            <li>Display popular, top-rated, and upcoming movies</li>
-                            <li>Search functionality for finding specific movies</li>
-                            <li>Detailed movie information pages</li>
-                            <li>Responsive design for various screen sizes</li>
-                            <li>Custom hooks for efficient data fetching</li>
-                        </ul>
-                        
-                        <h6>Challenges and Solutions</h6>
+<div class="modal fade" id="project2Modal" tabindex="-1" aria-labelledby="project2ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="project2ModalLabel">Movie.Info</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6>Description</h6>
+                <p>Movie.Info is a web application that provides users with information about popular, top-rated, and upcoming movies. The application includes a search functionality that allows users to find specific movies and view detailed information.</p>
+
+                <h6>Technologies Used</h6>
                 <ul>
-                    <li><strong>Search Functionality:</strong> Implementing search in both the home page and header component was challenging. The solution involved using React Router's useNavigate in the header to redirect to the search page with query parameters, and useLocation in the search component to extract and process these parameters.</li>
-                    <li><strong>API Integration:</strong> Choosing between Fetch API and Axios for making API calls to TMDB was a key decision. After comparing both, I opted for the Fetch API due to its built-in nature in modern browsers and to minimize external dependencies.</li>
+                    <li>React</li>
+                    <li>React Router</li>
+                    <li>Styled-components</li>
+                    <li>TMDB API</li>
+                    <li>Vite (for project setup and build)</li>
                 </ul>
-                
+
+                <h6>Key Features</h6>
+                <ul>
+                    <li>Display popular, top-rated, and upcoming movies</li>
+                    <li>Search functionality for finding specific movies</li>
+                    <li>Detailed movie information pages</li>
+                    <li>Responsive design for various screen sizes</li>
+                    <li>Custom hooks for efficient data fetching</li>
+                </ul>
+
+                <h6>Project Structure</h6>
+                <p>The project is organized to ensure maintainability and scalability:</p>
+                <ul>
+                    <li><strong>Component Structure:</strong> The application is divided into reusable components such as `Header`, `Home`, `Search`, and `MovieCard`. Each component is designed with a single responsibility in mind, making it easier to maintain and extend.</li>
+                    <li><strong>Custom Hooks:</strong> A custom hook called `useFetchMovies` was created to handle the data fetching logic for different categories of movies (popular, top-rated, upcoming). This hook is used in the `Home` component to avoid code duplication and ensure efficient API calls.</li>
+                </ul>
+
+                <h6>Benefits of Using Custom Data Fetching Hooks</h6>
+                <ul>
+                    <li><strong>Code Reusability:</strong> The `useFetchMovies` hook encapsulates the logic for fetching movies, making it reusable across different components. This avoids duplicating code and keeps the components clean and focused on rendering UI.</li>
+                    <li><strong>Centralized Logic:</strong> By using a custom hook, the data fetching logic is centralized, making it easier to manage, test, and update if the API changes.</li>
+                    <li><strong>Performance Optimization:</strong> The custom hook ensures that the API is called only when necessary, reducing unnecessary network requests and improving the application's performance.</li>
+                </ul>
+
+                <h6>Search Functionality</h6>
+                <ul>
+                    <li><strong>Search Implementation:</strong> The search functionality is implemented in the `Home` component. When a user enters a query, the application fetches the search results from the TMDB API and displays them on the page. This is handled efficiently by managing the search state within the `Home` component.</li>
+                    <li><strong>API Handling:</strong> The `fetchSearchResults` function in `api.js` handles the API call for searching movies. The function uses the Fetch API, which is built into modern browsers, making it lightweight and efficient for this task.</li>
+                </ul>
+
+                <h6>Challenges and Solutions</h6>
+                <ul>
+                    <li><strong>Handling Multiple API Calls:</strong> Fetching data for multiple movie categories without overloading the API was a challenge. This was addressed by using the custom `useFetchMovies` hook, which manages the API calls efficiently.</li>
+                    <li><strong>Search Functionality:</strong> Implementing search functionality required managing the search state and ensuring that the results were displayed dynamically without reloading the page. This was achieved using React's state management and the custom API function.</li>
+                </ul>
+
                 <h6>Lessons Learned</h6>
                 <ul>
-                    <li>Gained deeper understanding of React Router hooks like useNavigate and useLocation for managing navigation and URL parameters.</li>
-                    <li>Learned the pros and cons of Fetch API vs Axios, and how to effectively use Fetch API for HTTP requests in a React application.</li>
-                    <li>Improved skills in state management across components, especially for features like search that span multiple components.</li>
+                    <li>Gained a deeper understanding of React Router hooks like `useNavigate` and `useLocation` for managing navigation and URL parameters.</li>
+                    <li>Learned the benefits of using the Fetch API over Axios for simpler applications, reducing dependencies while still handling HTTP requests effectively.</li>
+                    <li>Improved skills in state management across components, particularly for features like search that require dynamic data fetching and rendering.</li>
                     <li>Enhanced knowledge of working with external APIs and handling asynchronous operations in React.</li>
                 </ul>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
+    </div>
+</div>
+
 
         <!-- Personal Portfolio Website Modal -->
         <div class="modal fade" id="project3Modal" tabindex="-1" aria-labelledby="project3ModalLabel" aria-hidden="true">
