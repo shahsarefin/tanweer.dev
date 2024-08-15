@@ -177,10 +177,18 @@
                         </ul>
                         
                         <h6>Challenges and Solutions</h6>
-                        <p>One of the main challenges was managing state across different components and pages. This was solved by implementing custom hooks for data fetching and using React Router for navigation.</p>
-                        
-                        <h6>Lessons Learned</h6>
-                        <p>This project deepened my understanding of React hooks, especially custom hooks for reusable logic. It also improved my skills in working with external APIs and managing asynchronous operations in React applications.</p>
+                <ul>
+                    <li><strong>Search Functionality:</strong> Implementing search in both the home page and header component was challenging. The solution involved using React Router's useNavigate in the header to redirect to the search page with query parameters, and useLocation in the search component to extract and process these parameters.</li>
+                    <li><strong>API Integration:</strong> Choosing between Fetch API and Axios for making API calls to TMDB was a key decision. After comparing both, I opted for the Fetch API due to its built-in nature in modern browsers and to minimize external dependencies.</li>
+                </ul>
+                
+                <h6>Lessons Learned</h6>
+                <ul>
+                    <li>Gained deeper understanding of React Router hooks like useNavigate and useLocation for managing navigation and URL parameters.</li>
+                    <li>Learned the pros and cons of Fetch API vs Axios, and how to effectively use Fetch API for HTTP requests in a React application.</li>
+                    <li>Improved skills in state management across components, especially for features like search that span multiple components.</li>
+                    <li>Enhanced knowledge of working with external APIs and handling asynchronous operations in React.</li>
+                </ul>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
