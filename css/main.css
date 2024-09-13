@@ -1,4 +1,4 @@
-/* css/main.css */
+/* Importing Merriweather Font */
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
 
 /* Base styles */
@@ -12,14 +12,12 @@ body {
     background-color: #f5f5f5;
     font-size: 16px;
     line-height: 1.6;
-    
 }
 
 .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 1rem 1rem;
-    
 }
 
 /* Header styles */
@@ -112,27 +110,26 @@ strong, .fw-bold {
     font-weight: 700;
 }
 
-
 /* Buttons */
 .btn {
     font-weight: 700;
     transition: all 0.3s ease;
-}
-
-.btn-primary, .btn-outline-secondary {
     color: #000;
     background-color: transparent;
     border-color: #000;
+    display: inline-block;
+    margin-right: 0.5rem;
 }
 
-.btn-primary:hover, .btn-primary:focus,
-.btn-outline-secondary:hover, .btn-outline-secondary:focus {
+.btn-primary:hover, 
+.btn-outline-secondary:hover {
     color: #fff;
     background-color: #000;
     border-color: #000;
 }
 
-.btn-primary:active, .btn-outline-secondary:active {
+.btn-primary:active,
+.btn-outline-secondary:active {
     color: #fff;
     background-color: #333;
     border-color: #333;
@@ -188,14 +185,17 @@ strong, .fw-bold {
     text-decoration: none;
     transition: color 0.3s ease;
 }
+
 .social-icons a:hover {
     color: #007bff;
 }
+
 .email-link {
     color: #000;
     text-decoration: none;
     transition: color 0.3s ease;
 }
+
 .email-link:hover {
     color: #007bff;
 }
@@ -218,4 +218,78 @@ strong, .fw-bold {
 
 #backToTop:hover {
     transform: translateY(-5px);
+}
+
+/* Scrollable Horizontal Navbar for Mobile */
+.navbar-nav-wrapper {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 0.5rem;
+}
+
+.navbar-nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-item {
+    flex: 0 0 auto;
+}
+
+.nav-link {
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+    color: #000 !important;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #007bff !important;
+}
+
+/* Separator line after logo */
+.navbar-separator {
+    display: inline-block;
+    width: 1px;
+    height: 30px;
+    background-color: #000;
+    margin: 0 1rem;
+}
+
+/* Button group alignment for multiple buttons */
+.mt-5 .btn {
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+/* Button animation styles */
+.btn {
+    opacity: 0; /* Initial state for animation */
+    transform: translateY(20px); /* Initial animation state */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth animation */
+}
+
+.btn.slide-up {
+    opacity: 1; /* Final state */
+    transform: translateY(0); /* Move to final position */
+}
+
+/* Button container to keep buttons in a single row */
+.button-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows buttons to wrap if necessary */
+    gap: 0.5rem; /* Adjusts space between the buttons */
+    justify-content: center; /* Centers the buttons within the container */
+}
+
+.button-container .btn {
+    flex: 1; /* Allows each button to take equal space */
+    min-width: fit-content; /* Prevents buttons from being too small */
+}
+
+/* Ensure buttons stay in one line and adjust if the screen size is small */
+@media (max-width: 768px) {
+    .button-container .btn {
+        flex: 0 1 auto; /* Keeps buttons inline and prevents too much stretching */
+    }
 }

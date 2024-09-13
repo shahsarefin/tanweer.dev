@@ -1,46 +1,55 @@
-/* css/projects.css */
+/* Main grid adjustments for single project per row */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1fr; /* One project per row */
     gap: 2rem;
     margin-bottom: 2rem;
 }
 
+/* Project card adjustments */
 .project-card {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    opacity: 0; /* Hidden initially */
+    transform: translateY(50px); /* Start below */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
 }
 
-.project-card.animate {
-    opacity: 1;
-    transform: translateY(0);
+/* Animation class */
+.slap-animate {
+    opacity: 1; /* Make visible */
+    transform: translateY(0); /* Move to original position */
 }
 
-@keyframes slap {
-    0% { transform: translateY(-50px) rotate(-5deg); opacity: 0; }
-    50% { transform: translateY(10px) rotate(2deg); opacity: 0.5; }
-    100% { transform: translateY(0) rotate(0); opacity: 1; }
-}
-
-.project-card.slap-animate {
-    animation: slap 0.7s ease-out forwards;
-}
-
+/* Image adjustments */
 .card-img-top {
+    flex: 0 0 300px; /* Fixed width for image */
     height: 200px;
     object-fit: cover;
+    border-right: 1px solid #ddd; /* Divider between image and content */
+}
+
+/* Content flex settings */
+.card {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: stretch;
+    border: 1px solid #ddd;
 }
 
 .card-body {
     display: flex;
     flex-direction: column;
+    padding: 1rem;
 }
 
 .card-text {
     flex-grow: 1;
 }
 
+/* Screenshot modal adjustments */
 .screenshot-container {
     position: relative;
     width: 100%;
@@ -66,65 +75,59 @@
     object-fit: contain;
     z-index: 1000;
     background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .modal-xl {
     max-width: 90%;
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
+    .card-img-top {
+        flex: 0 0 200px;
+        height: 150px;
+    }
+    
     .screenshot-container {
         height: 250px;
     }
-    
+
     .screenshot-container:hover .screenshot-img {
         width: 90%;
         height: 90%;
     }
 }
 
+/* Adjustments for mobile view to make cards appear as boxes */
 @media (max-width: 480px) {
+    .project-card {
+        flex-direction: column; /* Stack items vertically */
+        border: 1px solid #ddd;
+        padding: 1rem;
+        gap: 0; /* Remove gap for box-like appearance */
+    }
+
+    .card-img-top {
+        flex: 0 0 auto;
+        width: 100%;
+        height: 150px; /* Adjust height for a proper box appearance */
+        object-fit: cover;
+        border: none; /* Remove border between image and content */
+        margin-bottom: 10px; /* Add some space below the image */
+    }
+
+    .card-body {
+        flex: 1;
+        padding: 0; /* Adjust padding for a cleaner look */
+    }
+
     .screenshot-container {
         height: 200px;
     }
-    
+
     .screenshot-container:hover .screenshot-img {
         width: 95%;
         height: 95%;
-    }
-}
-
-/* Additional styles for better visibility on mobile */
-@media (max-width: 480px) {
-    .modal-body .row {
-        flex-direction: column;
-    }
-
-    .modal-body .col-md-4 {
-        width: 100%;
-        margin-bottom: 15px;
-    }
-
-    .screenshot-container {
-        height: auto;
-        max-height: 300px;
-    }
-
-    .screenshot-img {
-        height: auto;
-        max-height: 300px;
-    }
-
-    .screenshot-container:hover .screenshot-img {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 95%;
-        height: auto;
-        max-height: 90vh;
-        object-fit: contain;
     }
 }
